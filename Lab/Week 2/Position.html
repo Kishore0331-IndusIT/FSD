@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Property in CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+            height: 400px;
+            background-color: #ddd;
+            border: 2px solid #aaa;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            font-size: 20px;
+            border-radius: 10px;
+            position: absolute;
+        }
+
+        /* Static Position */
+        .static-box {
+            background-color: #4CAF50;
+        }
+
+        /* Relative Position */
+        .relative-box {
+            background-color: #2196F3;
+            position: relative;
+            top: 150px;
+            left: 150px;
+        }
+
+        /* Absolute Position */
+        .absolute-box {
+            background-color: #FF5733;
+            position: absolute;
+            top: 100px;
+            right: 0;
+        }
+
+        /* Fixed Position */
+        .fixed-box {
+            background-color: #9C27B0;
+            position: fixed;
+            top: 200px;
+            left: 500px;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Position Property in CSS</h1>
+
+    <div class="container">
+        <!-- Static position: Default positioning -->
+        <div class="box static-box">Static Box</div>
+
+        <!-- Relative position: Positioned relative to its normal position -->
+        <div class="box relative-box">Relative Box</div>
+
+        <!-- Absolute position: Positioned relative to its closest positioned ancestor -->
+        <div class="box absolute-box">Absolute Box</div>
+    </div>
+
+    <!-- Fixed Position: Positioned relative to the browser window -->
+    <div class="box fixed-box">Fixed Box</div>
+
+    <div class="info">
+        <p><strong>Static:</strong> The box is positioned according to the normal document flow.</p>
+        <p><strong>Relative:</strong> The box is moved relative to its normal position.</p>
+        <p><strong>Absolute:</strong> The box is positioned relative to its closest positioned ancestor.</p>
+        <p><strong>Fixed:</strong> The box stays fixed to the screen even when scrolling.</p>
+    </div>
+
+</body>
+</html>
