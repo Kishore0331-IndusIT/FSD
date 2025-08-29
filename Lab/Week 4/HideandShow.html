@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hide and Show Element Periodically</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+	body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 50%;
+            margin: 10px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+		h1 {
+            text-align: center;
+           
+			 width: 90%;
+            padding: 20px;
+            background-color: #b91df5;
+            color: white;
+            font-size: 22px;
+            border: none;
+            border-radius: 4px;
+        }
+        #myElement {
+            width: 400px;
+            height: 150px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>Hide and Show an Element</h1>
+    <div id="myElement">I will hide and show periodically!</div>
+</div>
+    <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                $('#myElement').fadeToggle(); // Hide or show the element
+            }, 2000); // 2000 milliseconds = 2 seconds
+        });
+    </script>
+
+</body>
+</html>

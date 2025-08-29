@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+	body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 50%;
+            margin: 10px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+	h1 {
+            text-align: center;
+           
+			 width: 90%;
+            padding: 30px;
+            background-color: #b91df5;
+            color: white;
+            font-size: 22px;
+            border: none;
+            border-radius: 4px;
+        }
+        .star-rating {
+            display: flex;
+			justify-content: center;
+            cursor: pointer;
+			
+        }
+        .star-rating i {
+            font-size: 40px;
+            color: #afd7ea;
+			
+        }
+        .star-rating .selected {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>Rate Your College - VJIT :: Hyderabad</h1>
+     <div class="star-rating">
+        <i class="fa fa-star" data-index="1"></i>
+        <i class="fa fa-star" data-index="2"></i>
+        <i class="fa fa-star" data-index="3"></i>
+        <i class="fa fa-star" data-index="4"></i>
+        <i class="fa fa-star" data-index="5"></i>
+    </div>
+
+    <p align="center">Your Rating: <span id="rating-value">0</span> stars</p>
+</div>
+    <script>
+        $(document).ready(function() {
+            var rating = 0;
+
+            // Hover effect to show the stars
+            $('.star-rating i').hover(function() {
+                var index = $(this).data('index');
+                // Highlight stars based on hover position
+                $('.star-rating i').each(function() {
+                    if ($(this).data('index') <= index) {
+                        $(this).addClass('selected');
+                    } else {
+                        $(this).removeClass('selected');
+                    }
+                });
+            }, function() {
+                // Reset hover effect
+                $('.star-rating i').removeClass('selected');
+                // Highlight selected rating
+                $('.star-rating i').each(function() {
+                    if ($(this).data('index') <= rating) {
+                        $(this).addClass('selected');
+                    }
+                });
+            });
+
+            // Click event to set the rating
+            $('.star-rating i').click(function() {
+                rating = $(this).data('index');
+                $('#rating-value').text(rating);
+
+                // Save the rating and highlight the selected stars
+                $('.star-rating i').each(function() {
+                    if ($(this).data('index') <= rating) {
+                        $(this).addClass('selected');
+                    } else {
+                        $(this).removeClass('selected');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
