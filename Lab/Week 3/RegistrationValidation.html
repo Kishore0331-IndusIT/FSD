@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+           
+			 width: 98%;
+            padding: 5px;
+            background-color: #b91df5;
+            color: white;
+            font-size: 22px;
+            border: none;
+            border-radius: 4px;
+        }
+		img {
+        	width: 100%;
+            border: none;
+            border-radius: 4px;
+         
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 98%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+			border-color: #6c3483;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+ <img src="banner.JPG" />
+    <h1>Registration Form</h1>
+    <form id="registrationForm" onsubmit="return validateForm()" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter ur Name">
+        <div class="error" id="usernameError">Please enter a valid username (4-15 characters, no special characters).</div>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter ur Password">
+        <div class="error" id="passwordError">Please enter a valid password (6-12 characters, at least one number).</div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter ur Email Id">
+        <div class="error" id="emailError">Please enter a valid email address.</div>
+
+        <label for="contact">Contact Number:</label>
+        <input type="text" id="contact" name="contact" maxlength=10 placeholder="Enter ur Mobile Number">
+        <div class="error" id="contactError">Please enter a valid 10-digit contact number.</div>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob">
+        <div class="error" id="dobError">Please enter your date of birth.</div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function validateForm() {
+        // Clear previous errors
+        const errors = document.querySelectorAll('.error');
+        errors.forEach(error => error.style.display = 'none');
+
+        // Username validation (4-15 characters, no special characters)
+        const username = document.getElementById('username').value;
+        const usernamePattern = /^[a-zA-Z0-9]{4,15}$/;
+        if (!username.match(usernamePattern)) {
+            document.getElementById('usernameError').style.display = 'block';
+            return false;
+        }
+
+        // Password validation (6-12 characters, at least one number)
+        const password = document.getElementById('password').value;
+        const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        if (!password.match(passwordPattern)) {
+            document.getElementById('passwordError').style.display = 'block';
+            return false;
+        }
+
+        // Email validation
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!email.match(emailPattern)) {
+            document.getElementById('emailError').style.display = 'block';
+            return false;
+        }
+
+        // Contact Number validation (exactly 10 digits)
+        const contact = document.getElementById('contact').value;
+        const contactPattern = /^\d{10}$/;
+        if (!contact.match(contactPattern)) {
+            document.getElementById('contactError').style.display = 'block';
+            return false;
+        }
+
+        // Date of Birth validation (should not be empty)
+        const dob = document.getElementById('dob').value;
+        if (!dob) {
+            document.getElementById('dobError').style.display = 'block';
+            return false;
+        }
+
+        alert("Registration successful!");
+        return true;
+    }
+</script>
+
+</body>
+</html>
